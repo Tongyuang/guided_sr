@@ -55,7 +55,9 @@ refer to the original paper to check the meaning of $λ'$.
 
 ## 2.[Enhancing Image Rescaling using Dual Latent Variables in Invertible Neural Network](https://arxiv.org/abs/2207.11844), CVPR 2022, USC+Baidu
 
-
+#### Abstract
+- The ill-posed nature of **image downscaling**, where one HR image could be downsized to multiple LR images depending on different interpolation kernels and resampling methods, is not considered. 
+- **A new downscaling latent variable**, in addition to the original one representing uncertainties in image upscaling, is introduced to model variations in the image downscaling process.
 
 
 ## 3. [Downscaled Representation Matters: Improving Image Rescaling with Collaborative Downscaled Images](https://openaccess.thecvf.com/content/ICCV2023/html/Xu_Downscaled_Representation_Matters_Improving_Image_Rescaling_with_Collaborative_Downscaled_Images_ICCV_2023_paper.html), ICCV 2023
