@@ -3,7 +3,7 @@ Papers
 
 A list of related papers.
 
-## [Invertible Image Rescaling](https://link.springer.com/chapter/10.1007/978-3-030-58452-8_8), ECCV 2020
+## [Invertible Image Rescaling](https://link.springer.com/chapter/10.1007/978-3-030-58452-8_8), ECCV 2020, IJCV 2022 PKU+MSRA
 
 Code [here](https://github.com/pkuxmq/Invertible-Image-Rescaling)
 
@@ -48,12 +48,22 @@ Introduces a case-agnostic $z$ that follows the distribution $p(z)$, the upscale
 $$L_{total} := λ_1L_{recon} + λ_2L_{guide} + λ_3L_{distr}$$
 
 To solve the unstable issues, use this instead:
+
 $$L_{total} := λ_1L_{recon} + λ_2L_{guide} + λ'_3L_{distr}$$
+
 refer to the original paper to check the meaning of $λ'$.
 
+## 2.[Enhancing Image Rescaling using Dual Latent Variables in Invertible Neural Network](https://arxiv.org/abs/2207.11844), CVPR 2022, USC+Baidu
 
 
-## 2. [Downscaled Representation Matters: Improving Image Rescaling with Collaborative Downscaled Images](https://openaccess.thecvf.com/content/ICCV2023/html/Xu_Downscaled_Representation_Matters_Improving_Image_Rescaling_with_Collaborative_Downscaled_Images_ICCV_2023_paper.html), ICCV 2023
 
 
+## 3. [Downscaled Representation Matters: Improving Image Rescaling with Collaborative Downscaled Images](https://openaccess.thecvf.com/content/ICCV2023/html/Xu_Downscaled_Representation_Matters_Improving_Image_Rescaling_with_Collaborative_Downscaled_Images_ICCV_2023_paper.html), ICCV 2023
+
+Code [here](https://github.com/xubingna/HCD)
+
+
+## 4.[Self-Asymmetric Invertible Network for Compression-Aware Image Rescaling](https://arxiv.org/abs/2303.02353), AAAI 2023, Bytedance
+
+Code [here](https://github.com/yang-jin-hai/SAIN)
 
