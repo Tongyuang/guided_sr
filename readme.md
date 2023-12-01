@@ -1,5 +1,7 @@
-Guided SR
+Farm Image Rescaling
 ======
-Approach to guided SR to remote high resolution image transmission.
+Approach to Image Rescaling to remote high resolution image transmission.
 
-Remote high resolution image -> comressed low resolution image + feature -> transmission -> reconstruction through SR
+Remote high resolution image -> comressed low resolution image + feature -> transmission -> reconstruction through Image Rescaling
+
+
