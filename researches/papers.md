@@ -20,7 +20,7 @@ Code [here](https://github.com/pkuxmq/Invertible-Image-Rescaling)
 
 #### Model
 
-<img src="https://www.researchgate.net/publication/364306204/figure/fig2/AS:11431281089160479@1665454362260/Illustration-of-our-Invertible-Rescaling-Network-IRN-as-the-instantiation-model-of-our.png">
+<img src="https://raw.githubusercontent.com/pkuxmq/Invertible-Image-Rescaling/master/figures/architecture.jpg">
 
 1. **Haar Transformation**: From original image($H\times W \times C$) to filtered information ($\frac{1}{2}H \times \frac{1}{2}W \times 4C$), the first channel is the low frequency information and the remaining 3 channels are the high frequency residual components in 3 directions.
 
@@ -54,4 +54,6 @@ refer to the original paper to check the meaning of $λ'$.
 
 
 ## 2. [Downscaled Representation Matters: Improving Image Rescaling with Collaborative Downscaled Images](https://openaccess.thecvf.com/content/ICCV2023/html/Xu_Downscaled_Representation_Matters_Improving_Image_Rescaling_with_Collaborative_Downscaled_Images_ICCV_2023_paper.html), ICCV 2023
+
+
 
