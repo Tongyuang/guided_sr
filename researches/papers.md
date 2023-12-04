@@ -42,30 +42,51 @@ $$L_{recon}(θ) = \sum_{n=1}^{N}E_{p(z)}[l_{\chi}(x^{(n)},f_{(\theta)}^{-1}(f_{\
 Introduces a case-agnostic $z$ that follows the distribution $p(z)$, the upscale function $f_{(\theta)}^{-1}$ takes both the downscaled image and a latent variable to generate the original image.
 
 3. **Distribution Matching** encourage the model to catch the data distribution q(x) of HR images
+- The original distribution of images. For all image x in sample cloud: $x \in \{{x^{(n)}}\}_{n=1}^{N}$, we assume a distribution $x \sim q(x)$.
+- The downsampled image's distribution: $y \in \{{y^{(n)}}\}_{n=1}^{N}$, given $y^{(n)} := f_{\theta}^{y}(x^{(n)})$, $y$ follows the distribution as $y^{(n)} \sim f_{\theta \#}^{y}[q(x)]$.
+- When reconstructing original HD image: $f_{\theta}^{-1}(y^{(n)},z^{(n)})$, we know that $z$ is randomly sampled from latent space, assume that $z^{(n)} \sim p(z)$, and we hope it's case-agnostic, so $p(z)$ and $q(x)$ are not related. so the reconstructed image's distribution is:
+$$f_{\theta}^{-1}(y^{(n)},z^{(n)}) \sim f_{\theta \#}^{-1}[f_{\theta \#}^{y}[q(x)]p(z)]$$
+- Now, minimize the distribution difference:
+$$L_{distr}(\theta) := L_{P}(f_{\theta \#}^{-1}[f_{\theta \#}^{y}[q(x)]p(z)],q(x))$$
+
+if using JS divergence as $L_p$, the loss function can be simplified (based on Monte Carlo estimation from the paper):
+
+$$JS(f_{\theta \#}^{-1}[f_{\theta \#}^{y}[q(x)]p(z)],q(x)) \approx \frac{1}{2N} max_T \sum_{N} \{ log \sigma(T(x^{(n)})) + log(1-\sigma[T(f_\theta^{-1}(f_\theta^y(x^{(n)}),z^{(n)}))]) \} $$
+
+
+
 
 4. Total loss:
 
 $$L_{total} := λ_1L_{recon} + λ_2L_{guide} + λ_3L_{distr}$$
 
-To solve the unstable issues, use this instead:
+To solve the unstable issues, use cross entropy to replace JS divergence before:
 
-$$L_{total} := λ_1L_{recon} + λ_2L_{guide} + λ'_3L_{distr}$$
+$$L_{total} := λ_1L_{recon} + λ_2L_{guide} + λ_3L'_{distr}$$
 
 refer to the original paper to check the meaning of $λ'$.
 
-## 2.[Enhancing Image Rescaling using Dual Latent Variables in Invertible Neural Network](https://arxiv.org/abs/2207.11844), CVPR 2022, USC+Baidu
+Additionally, also apply perceptual loss $L_{percp}$ to measure the difference of two images via their semantic features extracted by benchmarking models. The IRN+ model's total loss will be:
+
+$$L_{IRN+} = λ_1L_{recon} + λ_2L_{guide} + λ_3L'_{distr} + \lambda_4L_{percp}$$
+
+## [Hierarchical Conditional Flow: A Unified Framework for Image Super-Resolution and Image Rescaling](https://arxiv.org/abs/2108.05301), ICCV2021
+
+
+
+## [Enhancing Image Rescaling using Dual Latent Variables in Invertible Neural Network](https://arxiv.org/abs/2207.11844), CVPR 2022, USC+Baidu
 
 #### Abstract
 - The ill-posed nature of **image downscaling**, where one HR image could be downsized to multiple LR images depending on different interpolation kernels and resampling methods, is not considered. 
 - **A new downscaling latent variable**, in addition to the original one representing uncertainties in image upscaling, is introduced to model variations in the image downscaling process.
 
 
-## 3. [Downscaled Representation Matters: Improving Image Rescaling with Collaborative Downscaled Images](https://openaccess.thecvf.com/content/ICCV2023/html/Xu_Downscaled_Representation_Matters_Improving_Image_Rescaling_with_Collaborative_Downscaled_Images_ICCV_2023_paper.html), ICCV 2023
+## [Downscaled Representation Matters: Improving Image Rescaling with Collaborative Downscaled Images](https://openaccess.thecvf.com/content/ICCV2023/html/Xu_Downscaled_Representation_Matters_Improving_Image_Rescaling_with_Collaborative_Downscaled_Images_ICCV_2023_paper.html), ICCV 2023
 
 Code [here](https://github.com/xubingna/HCD)
 
 
-## 4.[Self-Asymmetric Invertible Network for Compression-Aware Image Rescaling](https://arxiv.org/abs/2303.02353), AAAI 2023, Bytedance
+## [Self-Asymmetric Invertible Network for Compression-Aware Image Rescaling](https://arxiv.org/abs/2303.02353), AAAI 2023, Bytedance
 
 Code [here](https://github.com/yang-jin-hai/SAIN)
 
