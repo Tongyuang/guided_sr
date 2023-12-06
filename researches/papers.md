@@ -45,7 +45,9 @@ Introduces a case-agnostic $z$ that follows the distribution $p(z)$, the upscale
 - The original distribution of images. For all image x in sample cloud: $x \in \{{x^{(n)}}\}_{n=1}^{N}$, we assume a distribution $x \sim q(x)$.
 - The downsampled image's distribution: $y \in \{{y^{(n)}}\}_{n=1}^{N}$, given $y^{(n)} := f_{\theta}^{y}(x^{(n)})$, $y$ follows the distribution as $y^{(n)} \sim f_{\theta \#}^{y}[q(x)]$.
 - When reconstructing original HD image: $f_{\theta}^{-1}(y^{(n)},z^{(n)})$, we know that $z$ is randomly sampled from latent space, assume that $z^{(n)} \sim p(z)$, and we hope it's case-agnostic, so $p(z)$ and $q(x)$ are not related. so the reconstructed image's distribution is:
+- 
 $$f_{\theta}^{-1}(y^{(n)},z^{(n)}) \sim f_{\theta \#}^{-1}[f_{\theta \#}^{y}[q(x)]p(z)]$$
+
 - Now, minimize the distribution difference:
 $$L_{distr}(\theta) := L_{P}(f_{\theta \#}^{-1}[f_{\theta \#}^{y}[q(x)]p(z)],q(x))$$
 
