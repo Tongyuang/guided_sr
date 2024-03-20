@@ -1,0 +1,49 @@
+23-12-08 01:38:12.376 - INFO:   name: IRN_x4
+  suffix: None
+  model: IRN
+  distortion: sr
+  scale: 4
+  crop_border: None
+  gpu_ids: [0]
+  datasets:[
+    test_1:[
+      name: desktop
+      mode: LQGT
+      dataroot_GT: ./dataset/desktop/HR
+      phase: test
+      scale: 4
+      data_type: img
+    ]
+  ]
+  network_G:[
+    which_model_G:[
+      subnet_type: DBNet
+    ]
+    in_nc: 3
+    out_nc: 3
+    block_num: [8, 8]
+    scale: 4
+    init: xavier
+  ]
+  path:[
+    pretrain_model_G: ../experiments/pretrained_models/IRN_x4.pth
+    root: /data0/yuang/Invertible-Image-Rescaling
+    results_root: /data0/yuang/Invertible-Image-Rescaling/results/IRN_x4
+    log: /data0/yuang/Invertible-Image-Rescaling/results/IRN_x4
+  ]
+  is_train: False
+
+23-12-08 01:38:12.376 - INFO: Dataset [LQGTDataset - desktop] is created.
+23-12-08 01:38:12.376 - INFO: Number of test images in [desktop]: 2
+23-12-08 01:38:12.936 - INFO: Loading model for G [../experiments/pretrained_models/IRN_x4.pth] ...
+23-12-08 01:38:12.961 - INFO: Model [IRNModel] is created.
+23-12-08 01:38:12.961 - INFO: 
+Testing [desktop]...
+23-12-08 01:38:17.956 - INFO: desktop1             - PSNR: 32.706904 dB; SSIM: 0.930132; PSNR_Y: 34.342050 dB; SSIM_Y: 0.944649. LR PSNR: 37.048215 dB; SSIM: 0.966315; PSNR_Y: 43.613596 dB; SSIM_Y: 0.992426.
+23-12-08 01:38:21.665 - INFO: desktop2             - PSNR: 32.606709 dB; SSIM: 0.928973; PSNR_Y: 34.240614 dB; SSIM_Y: 0.943734. LR PSNR: 36.966394 dB; SSIM: 0.966732; PSNR_Y: 43.424200 dB; SSIM_Y: 0.992666.
+23-12-08 01:38:21.679 - INFO: ----Average PSNR/SSIM results for desktop----
+	psnr: 32.656807 db; ssim: 0.929553. LR psnr: 37.007305 db; ssim: 0.966524.
+
+23-12-08 01:38:21.679 - INFO: ----Y channel, average PSNR/SSIM----
+	PSNR_Y: 34.291332 dB; SSIM_Y: 0.944191. LR PSNR_Y: 43.518898 dB; SSIM_Y: 0.992546.
+

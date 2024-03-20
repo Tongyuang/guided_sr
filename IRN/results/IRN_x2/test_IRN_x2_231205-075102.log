@@ -1,0 +1,42 @@
+23-12-05 07:51:02.793 - INFO:   name: IRN_x2
+  suffix: None
+  model: IRN
+  distortion: sr
+  scale: 2
+  crop_border: None
+  gpu_ids: [0]
+  datasets:[
+    test_1:[
+      name: farm_jpg
+      mode: LQGT
+      dataroot_GT: ./dataset/Farm_jpg/HR
+      dataroot_LQ: ./dataset/Farm_jpg/LR
+      phase: test
+      scale: 2
+      data_type: img
+    ]
+  ]
+  network_G:[
+    which_model_G:[
+      subnet_type: DBNet
+    ]
+    in_nc: 3
+    out_nc: 3
+    block_num: [8]
+    scale: 2
+    init: xavier
+  ]
+  path:[
+    pretrain_model_G: ../experiments/pretrained_models/IRN_x2.pth
+    root: /data0/yuang/Invertible-Image-Rescaling
+    results_root: /data0/yuang/Invertible-Image-Rescaling/results/IRN_x2
+    log: /data0/yuang/Invertible-Image-Rescaling/results/IRN_x2
+  ]
+  is_train: False
+
+23-12-05 07:51:02.793 - INFO: Dataset [LQGTDataset - farm_jpg] is created.
+23-12-05 07:51:02.793 - INFO: Number of test images in [farm_jpg]: 1
+23-12-05 07:51:03.321 - INFO: Loading model for G [../experiments/pretrained_models/IRN_x2.pth] ...
+23-12-05 07:51:03.331 - INFO: Model [IRNModel] is created.
+23-12-05 07:51:03.331 - INFO: 
+Testing [farm_jpg]...
